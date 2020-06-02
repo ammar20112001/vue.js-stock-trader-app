@@ -65,6 +65,7 @@ export default {
                         }
                         this.$store.state.funds = dataArray[dataArray.length-1].funds;
                         this.$store.state.portfolio = dataArray[dataArray.length-1].stocks;
+                        this.$store.state.stocks = dataArray[dataArray.length-1].stocksAvailable;
                         // console.log(data)
                         // console.log(data.funds)
                         // this.$store.state.funds = data.funds;
@@ -77,6 +78,7 @@ export default {
             return {
                 funds: this.$store.state.funds,
                 stocks: this.$store.state.portfolio,
+                stocksAvailable: this.$store.state.stocks,
             }
         }
     }
