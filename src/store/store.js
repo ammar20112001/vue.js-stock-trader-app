@@ -36,6 +36,16 @@ export const store = new Vuex.Store({
         },
         fundsAdded: (state, price) => {
             state.funds += price;
-        }
+        },
+        // addData: (state, data) => {
+        //     console.log('running')
+        //     console.log(data)
+        //     this.$http.post('https://stock-trader-2278a.firebaseio.com/stockData.json', data)
+        //             .then(response => {
+        //                 console.log(response)
+        //             }, error => {
+        //                 console.log(error)
+        //             });
+        // }
     }
 })
