@@ -25,7 +25,6 @@
                 </b-col>
             </b-row>
         </b-container>
-        <!-- <div>{{ this.$store.state.portfolio }}</div> -->
     </div>  
 </template>
 

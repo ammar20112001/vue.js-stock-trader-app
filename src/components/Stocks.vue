@@ -39,7 +39,6 @@ export default {
             let input = parseInt(document.getElementById(inputId).value);
             let value = input * stock.price
             if (value <= this.$store.state.funds) {
-                // console.log(input)
                 if (input === null || input < 1) {
                     return;
                 } 

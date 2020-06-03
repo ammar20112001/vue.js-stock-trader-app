@@ -30,19 +30,19 @@
 
 <script>
 
-// import { mapMutations } from 'vuex'
-
 export default {
     methods: {
-            // ...mapMutations([
-            //     'addData'
-            // ]),
         endDay() {
             for (let i = 0; i < this.$store.state.stocks.length; i++) {
                 const num = this.$store.state.stocks[i].price
                 const minimum = num-15;
                 const maximum = num+15;
                 this.$store.state.stocks[i].price = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+                for (let j = 0; j < this.$store.state.portfolio.length; j++) {
+                    if (this.$store.state.portfolio[j].price === num) {
+                        this.$store.state.portfolio[j].price = this.$store.state.stocks[i].price;
+                    }
+                }
             }        
         },
         uploadData(data) {
@@ -64,12 +64,12 @@ export default {
                             dataArray.push(data[stock]);
                         }
                         this.$store.state.funds = dataArray[dataArray.length-1].funds;
-                        this.$store.state.portfolio = dataArray[dataArray.length-1].stocks;
                         this.$store.state.stocks = dataArray[dataArray.length-1].stocksAvailable;
-                        // console.log(data)
-                        // console.log(data.funds)
-                        // this.$store.state.funds = data.funds;
-                        // this.$store.state.portfolio = data.stocks;
+                        if (dataArray[dataArray.length-1].stocks) {
+                            this.$store.state.portfolio = dataArray[dataArray.length-1].stocks;
+                        } else {
+                            this.$store.state.portfolio = [];
+                        }
                     })
         }
     },
