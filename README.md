@@ -2,7 +2,7 @@
 
 ## Project setup
 ```
-npm install vue
+npm install 
 ```
 
 ### Compiles and hot-reloads for development
