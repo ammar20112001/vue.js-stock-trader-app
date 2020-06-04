@@ -46,7 +46,7 @@ export default {
             }        
         },
         uploadData(data) {
-            this.$http.post('https://stock-trader-2278a.firebaseio.com/stockData.json', data)
+            this.$http.put('https://stock-trader-2278a.firebaseio.com/stockData.json', data)
                     .then(response => {
                         console.log(response)
                     }, error => {
@@ -59,14 +59,10 @@ export default {
                         return response.json(); 
                     })
                     .then(data => {
-                        let dataArray = [];
-                        for (let stock in data) {
-                            dataArray.push(data[stock]);
-                        }
-                        this.$store.state.funds = dataArray[dataArray.length-1].funds;
-                        this.$store.state.stocks = dataArray[dataArray.length-1].stocksAvailable;
-                        if (dataArray[dataArray.length-1].stocks) {
-                            this.$store.state.portfolio = dataArray[dataArray.length-1].stocks;
+                        this.$store.state.funds = data.funds;
+                        this.$store.state.stocks = data.stocksAvailable;
+                        if (data.stocks) {
+                            this.$store.state.portfolio = data.stocks;
                         } else {
                             this.$store.state.portfolio = [];
                         }
